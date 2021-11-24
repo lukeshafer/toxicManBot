@@ -1,7 +1,8 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
-var config = require('./config.json');
+const configFileName = './config.json';
+var config = require(configFileName);
 const commandsFileName = './commands.json';
 var commands = require(commandsFileName);
 const fs = require('fs');
@@ -51,14 +52,30 @@ function is_new_user(userID) {
     return true;
 }
 
+function checkIfOp(userID) {
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].userID == userID) {
+            return users[i].op;
+        }
+    }
+    return false;
+}
+
 function log_message(user, userID, channelID, message) {
     console.log(getCurrentDateTime()); // logs current date / time 
     console.log(user + " - " + userID); // logs username and user ID
     console.log("in " + channelID); // logs Channel ID
     console.log(message); // logs received message
     if (is_new_user(userID)) {
-        // if user not flagged as New by the function, log in the users.log file
+        // if user flagged as New by the function, log in the users.log file
         var content = user + ", " + userID + "\n";
+        const newUser = {name: user, userID: userID, op: false, toxic_responses: []};
+        config.users.push(newUser);
+        fs.writeFile(configFileName, JSON.stringify(config, null, 2), function writeJSON(err) {
+            if (err) return console.log(err);
+            console.log(JSON.stringify(newUser));
+            console.log('writing to ' + configFileName);
+        });
         fs.appendFile('users.log', content, err => {
           if (err) {
             console.error(err);
@@ -125,7 +142,7 @@ function toxic_message(channelID, userID) {
 
     // check if user exists, and if so, could send custom response:
     for (let i = 0; i < users.length; i++) {
-        if (users[i].userID == userID) {
+        if (users[i].userID == userID && users[i].toxic_responses) {
             special_responses = users[i].toxic_responses;
         }
     }
@@ -183,6 +200,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     //console.log('Message received from %s - \n"%s"\n', user, message);
     if (message.substring(0, 1) == '!') {
         // Commands starting with !
+        console.log(evt);
         log_message(user, userID, channelID, message);
         var args = message.substring(1).split(' ');
         var cmd = args[0];
@@ -217,7 +235,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 var newCmd = args[0];
                 args = args.splice(1);
                 var cmdText = args.join(' ');
-                if (newCmd == "addCommand") {
+                if (!(checkIfOp(userID))) {
+                    console.log("Unauthorized Use");
+                    send_message(channelID, "NOT ALLOWWWWWED");
+                } else if (newCmd == "addCommand") {
                     console.log("Can't create addCommand");
                     send_message(channelID, "BAD BAD BAD BAD BAD!!! BAD!!! NO!!!!");
                 } else if (!(args[0])) {
