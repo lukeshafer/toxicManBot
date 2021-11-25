@@ -179,14 +179,16 @@ function send_name(channelID) {
     send_message(channelID, messageText)
 }
 
-function roll(args) {
-    for (let i = 0; i < args.length; i++) {
-        roll_helper(args[i])
+function roll(msg) {
+    for (let i = 0; i < msg.length; i++) {
+        if (msg[i] < 9 && msg[i] > 0) {
+          
+        }
     }
 }
 
 function roll_helper() {
-
+  
 }
 
 bot.on('ready', function (evt) {
@@ -200,7 +202,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     //console.log('Message received from %s - \n"%s"\n', user, message);
     if (message.substring(0, 1) == '!') {
         // Commands starting with !
-        console.log(evt);
+        // console.log(evt);
         log_message(user, userID, channelID, message);
         var args = message.substring(1).split(' ');
         var cmd = args[0];
@@ -214,7 +216,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
             case 'roll':
                 // Rolls a die
-                var result = roll(args);
+                var result = roll(args.join(' '));
                 send_message(channelID, "jesus fucking christ pal, how'd you learn about this???");
                 break;
             case 'ask':
