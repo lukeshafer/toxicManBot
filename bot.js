@@ -1,4 +1,4 @@
-var Discord = require('discord.io');
+  var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 const configFileName = './config.json';
@@ -268,5 +268,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         // Activates when bot is @'d or DM'd
         log_message(user, userID, channelID, message);
         toxic_message(channelID, userID);
-    }
+  } else if((evt.d.hasOwnProperty('member')) && (message.includes("69"))) {
+      send_message(channelID,"hAhhh . nice !");
+  }
 });

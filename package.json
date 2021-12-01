@@ -5,7 +5,7 @@
 	"main": "bot.js",
 	"author": "Luke Shafer",
 	"scripts": {
-        "run" : "node bot.js"
+		"run": "node bot.js"
 	},
 	"dependencies": {
 		"discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
