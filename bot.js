@@ -271,6 +271,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         messageText = ""
         for (property in config.reactions) {
             if (message.includes(property)) {
+                log_message(user, userID, channelID, message);
                 console.log("SECRET MESSAGE!");
                 messageText += config.reactions[property]+" ";
                 send_message(channelID,config.reactions[property]);

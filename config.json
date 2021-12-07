@@ -47,6 +47,12 @@
       "userID": "722988320501661707",
       "op": false,
       "toxic_responses": []
+    },
+    {
+      "name": "ieatgarbage69.420",
+      "userID": "910747656161218600",
+      "op": false,
+      "toxic_responses": []
     }
   ],
   "toxic_responses": [
@@ -299,10 +305,10 @@
     " (sadly)",
     " (rated bESt name oF! 2004)! /"
   ],
-  "reactions" : {
-    "69" : "hAhhh . nice !",
-    "420" : "DRUGS are NoT ALLOWD! !",
-    "worm" : "WOORM??",
-    "bastard" : "i am NOT A BASTERD."
+  "reactions": {
+    "69": "hAhhh . nice !",
+    "420": "DRUGS are NoT ALLOWD! !",
+    "worm": "WOORM??",
+    "bastard": "i am NOT A BASTERD."
   }
 }
