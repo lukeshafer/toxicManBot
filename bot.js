@@ -1,4 +1,4 @@
-  var Discord = require('discord.io');
+var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 const configFileName = './config.json';
@@ -232,10 +232,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 // Generates baby name
                 send_name(channelID);
                 break;
-            case 'addCommand':
-                // Add new commands with static responses
-                var newCmd = args[0];
-                args = args.splice(1);
+            case 'addCommand': // Add new commands with static responses
+                var newCmd = args[0]; // first word after !addCommand is the new command
+                args = args.splice(1); // 
                 var cmdText = args.join(' ');
                 if (!(checkIfOp(userID))) {
                     console.log("Unauthorized Use");
@@ -268,7 +267,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         // Activates when bot is @'d or DM'd
         log_message(user, userID, channelID, message);
         toxic_message(channelID, userID);
-  } else if((evt.d.hasOwnProperty('member')) && ((message.includes("69")) || (message.includes("420")))) {
-      send_message(channelID,"hAhhh . nice !");
-  }
+    } else if(evt.d.hasOwnProperty('member')) { // respond if message contains 69 or 420
+        for (property in config.reactions) {
+            if (message.includes(property)) {
+                console.log("SECRET MESSAGE!")
+                send_message(channelID,config.reactions[property]);
+                break;
+            }
+        }
+    }
 });
