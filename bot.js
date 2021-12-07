@@ -206,7 +206,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         log_message(user, userID, channelID, message);
         var args = message.substring(1).split(' ');
         var cmd = args[0];
-       
+        var messageText;
         args = args.splice(1);
         switch(cmd) {
             // !commands below!
@@ -267,12 +267,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         // Activates when bot is @'d or DM'd
         log_message(user, userID, channelID, message);
         toxic_message(channelID, userID);
-    } else if(evt.d.hasOwnProperty('member')) { // respond if message contains 69 or 420
+    } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a word in 
+        messageText = ""
         for (property in config.reactions) {
             if (message.includes(property)) {
-                console.log("SECRET MESSAGE!")
+                console.log("SECRET MESSAGE!");
+                messageText += config.reactions[property]+" ";
                 send_message(channelID,config.reactions[property]);
-                break;
             }
         }
     }
