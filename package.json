@@ -1,6 +1,6 @@
 {
 	"name": "greeter-bot",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Toxic Man",
 	"main": "bot.js",
 	"author": "Luke Shafer",
