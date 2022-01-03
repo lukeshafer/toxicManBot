@@ -65,6 +65,12 @@
       "userID": "501588049105256458",
       "op": false,
       "toxic_responses": []
+    },
+    {
+      "name": "ghost <3",
+      "userID": "752713148481405121",
+      "op": false,
+      "toxic_responses": []
     }
   ],
   "toxic_responses": [
@@ -319,8 +325,8 @@
     " (rated bESt name oF! 2004)! /"
   ],
   "reactions": {
-    "69 ": "hAhhh . nice !",
     "420": "DRUGS are NoT ALLOWD! !",
+    "69 ": "hAhhh . nice !",
     "worm": "WOORM??",
     "bastard": "i am NOT A BASTERD."
   }
