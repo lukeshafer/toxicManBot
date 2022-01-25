@@ -271,7 +271,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a word in 
         messageText = ""
         for (property in config.reactions) {
-            if (message.includes(property)) {
+            if (message.includes(property.toLowerCase())) {
                 log_message(user, userID, channelID, message);
                 console.log("SECRET MESSAGE!");
                 messageText += config.reactions[property]+" ";
