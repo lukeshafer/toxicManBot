@@ -66,26 +66,26 @@ function log_message(user, userID, channelID, message) {
     console.log(user + " - " + userID); // logs username and user ID
     console.log("in " + channelID); // logs Channel ID
     console.log(message); // logs received message
-    if (is_new_user(userID)) {
-        // if user flagged as New by the function, log in the users.log file
-        var content = user + ", " + userID + "\n";
-        const newUser = {name: user, userID: userID, op: false, toxic_responses: []};
-        config.users.push(newUser);
-        fs.writeFile(configFileName, JSON.stringify(config, null, 2), function writeJSON(err) {
-            if (err) return console.log(err);
-            console.log(JSON.stringify(newUser));
-            console.log('writing to ' + configFileName);
-        });
-        fs.appendFile('users.log', content, err => {
-          if (err) {
-            console.error(err);
-            return;
-          }
-          //done!
-        })
-        new_users.push(userID);
-        console.log("Logged new user %s", user);
-    }
+    // if (is_new_user(userID)) {
+    //     // if user flagged as New by the function, log in the users.log file
+    //     var content = user + ", " + userID + "\n";
+    //     const newUser = {name: user, userID: userID, op: false, toxic_responses: []};
+    //     config.users.push(newUser);
+    //     fs.writeFile(configFileName, JSON.stringify(config, null, 2), function writeJSON(err) {
+    //         if (err) return console.log(err);
+    //         console.log(JSON.stringify(newUser));
+    //         console.log('writing to ' + configFileName);
+    //     });
+    //     fs.appendFile('users.log', content, err => {
+    //       if (err) {
+    //         console.error(err);
+    //         return;
+    //       }
+    //       //done!
+    //     })
+    //     new_users.push(userID);
+    //     console.log("Logged new user %s", user);
+    // }
 }
 
 function send_message(channelID, messageText) {
@@ -123,11 +123,11 @@ function addCommand(command, commandText) {
         return false;
     } else {
         commands[command] = commandText;
-        fs.writeFile(commandsFileName, JSON.stringify(commands, null, 2), function writeJSON(err) {
-            if (err) return console.log(err);
-            console.log(JSON.stringify(commands));
-            console.log('writing to ' + commandsFileName);
-        });
+        // fs.writeFile(commandsFileName, JSON.stringify(commands, null, 2), function writeJSON(err) {
+        //     if (err) return console.log(err);
+        //     console.log(JSON.stringify(commands));
+        //     console.log('writing to ' + commandsFileName);
+        // });
         return true;
     }
 }
@@ -271,7 +271,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a word in 
         messageText = ""
         for (property in config.reactions) {
-            if (message.includes(property.toLowerCase())) {
+            var lowerCaseMsg = message.toLowerCase();
+            if (lowerCaseMsg.includes(property)) {
                 log_message(user, userID, channelID, message);
                 console.log("SECRET MESSAGE!");
                 messageText += config.reactions[property]+" ";
