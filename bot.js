@@ -6,6 +6,7 @@ var config = require(configFileName);
 const commandsFileName = './commands.json';
 var commands = require(commandsFileName);
 const fs = require('fs');
+const { time } = require('console');
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -277,6 +278,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 console.log("SECRET MESSAGE!");
                 messageText += config.reactions[property]+" ";
                 send_message(channelID,config.reactions[property]);
+                if (userID == bot_id && property == "worm") {
+                    setTimeout(() => {  
+                        send_message(channelID,"...");
+                        console.log("HE WORMED HIMSELF OH NO!!"); 
+                    }, 1000);
+                    setTimeout(() => {  
+                        send_message(channelID,"I wourmed mY SELF ! ! :cry:");
+                        console.log("time to be sad :("); 
+                    }, 3000);
+                }
             }
         }
     }
