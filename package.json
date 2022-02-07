@@ -5,7 +5,8 @@
 	"main": "bot.js",
 	"author": "Luke Shafer",
 	"scripts": {
-		"start": "while true; do git pull --no-edit && npm run start-bot; done",
+		"start": "while true; do npm run start-bot; done",
+		"start-old": "while true; do git pull --no-edit && npm run start-bot; done",
 		"start-bot": "node bot.js",
 		"auto-git-push": "git add . && git commit -m \"Auto-Commit\" && git push"
 	},
