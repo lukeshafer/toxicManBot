@@ -269,7 +269,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         // Activates when bot is @'d or DM'd
         log_message(user, userID, channelID, message);
         toxic_message(channelID, userID);
-    } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a word in 
+    } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a specific word in it 
         messageText = ""
         for (property in config.reactions) {
             var lowerCaseMsg = message.toLowerCase();
