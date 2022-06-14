@@ -17,9 +17,17 @@ logger.level = 'debug';
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: auth.token,
-   autorun: true
+   autorun: false
 });
-var bot_id = config.id;
+
+//try {
+//    bot.connect();
+//} catch (error) {
+//    console.error(error);
+//}
+
+
+let bot_id = config.id;
 let users = config.users;
 let new_users = new Array();
 let toxic_responses = config.toxic_responses;
@@ -192,16 +200,36 @@ function roll_helper() {
   
 }
 
+async function asyncConnect() {
+    logger.info('Connecting...');
+    const result = await bot.connect();
+    logger.info(result);
+}
+
+asyncConnect();
+
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
+bot.on('disconnect', (errorMsg, code) => {
+    if (code === 1000) {
+        logger.info('Reconnecting...');
+        asyncConnect();
+    }
+    else {
+        logger.info('Bot Disconnected');
+        logger.info(`Error Message: ${errorMsg}`);
+        logger.info(`Error Code: ${code}`);
+        logger.info(typeof code);
+    }
+});
+
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    //console.log('Message received from %s - \n"%s"\n', user, message);
     if (message.substring(0, 1) == '!') {
         // Commands starting with !
         // console.log(evt);
@@ -269,11 +297,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         // Activates when bot is @'d or DM'd
         log_message(user, userID, channelID, message);
         toxic_message(channelID, userID);
-    } else if(evt.d.hasOwnProperty('member')) { // respond if ANY message contains a specific word in it 
+    } else if(evt.d.hasOwnProperty('member') && !(message.includes('||'))) { // respond if ANY message contains a specific word in it 
         messageText = ""
         for (property in config.reactions) {
-            var lowerCaseMsg = message.toLowerCase();
-            if (lowerCaseMsg.includes(property)) {
+            var newMsg = message.replace(/[^a-zA-Z0-9]/g, "");
+            var lowerCaseMsg = newMsg.toLowerCase();
+	    if (lowerCaseMsg.includes(property)) {
                 log_message(user, userID, channelID, message);
                 console.log("SECRET MESSAGE!");
                 messageText += config.reactions[property]+" ";
