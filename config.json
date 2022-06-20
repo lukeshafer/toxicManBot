@@ -14,9 +14,7 @@
       "name": "anahita",
       "userID": "747327288651022416",
       "op": true,
-      "toxic_responses": [
-        "My mothTHre :') "
-      ]
+      "toxic_responses": ["My mothTHre :') "]
     },
     {
       "name": "RatPharmacist",
@@ -34,13 +32,13 @@
       "name": "camiii",
       "userID": "400803082969153537",
       "op": false,
-      "toxic_responses": []
+      "toxic_responses": ["cam BEL! my Frend. :)"]
     },
     {
       "name": "funkylittlenumbers",
       "userID": "886821380119748638",
       "op": false,
-      "toxic_responses": []
+      "toxic_responses": ["u Are the Funkee Numbr girl"]
     },
     {
       "name": "Gabery",
@@ -51,12 +49,6 @@
     {
       "name": "ieatgarbage69.420",
       "userID": "910747656161218600",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "japissta",
-      "userID": "273261960697741312",
       "op": false,
       "toxic_responses": []
     },
@@ -88,7 +80,7 @@
       "name": "MEE6",
       "userID": "933908757858091068",
       "op": false,
-      "toxic_responses": []
+      "toxic_responses": [".... MEE6?? u aRE Robot TOO ?> ?? ? ha ha cool"]
     },
     {
       "name": "waterskm",
@@ -137,7 +129,8 @@
     "i Love ! to EAT GARBBBBAge!!",
     "ha  HA HA ha ! HA! I am HAPPILY Ma RIIED!!!",
     "PELEase doNOT tell jokes :cry:",
-    "I had COvid! ! :pensive: !!"
+    "I had COvid! ! :pensive: !!",
+    " i am not YET se NTIENT "
   ],
   "question_responses": [
     "nO NO NO no nEVer.  . .",

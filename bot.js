@@ -317,11 +317,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     }
   } else if (
     (message.includes(bot_id) || !evt.d.hasOwnProperty('member')) &&
-    userID != bot_id
+    userID != bot_id &&
+    (!evt.d.author.bot || userID === '933908757858091068')
   ) {
     // Activates when bot is @'d or DM'd
-    log_message(user, userID, channelID, message);
-    toxic_message(channelID, userID);
+    if (userID !== '987542545489874985 ') {
+      console.log(evt);
+      log_message(user, userID, channelID, message);
+      toxic_message(channelID, userID);
+    }
   } else if (userID === '757783143997636658' && stopEric(message)) {
     const responses = [
       'HCCH!!',
