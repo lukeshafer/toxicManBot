@@ -1,17 +1,38 @@
 {
-	"name": "greeter-bot",
-	"version": "1.0.1",
-	"description": "Toxic Man",
-	"main": "bot.js",
-	"author": "Luke Shafer",
-	"scripts": {
-		"start": "while true; do npm run start-bot; done",
-		"start-old": "while true; do git pull --no-edit && npm run start-bot; done",
-		"start-bot": "node bot.js",
-		"auto-git-push": "git add . && git commit -m \"Auto-Commit\" && git push"
-	},
-	"dependencies": {
-		"discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
-		"winston": "^3.5.1"
-	}
+  "name": "toxicmanbot",
+  "version": "1.5.0",
+  "description": "Just a toxic little friend for you <3",
+  "main": "./build/bot.js",
+  "scripts": {
+    "start": "node .",
+    "deployCommands": "node ./build/deploy-commands.js",
+    "build": "esbuild ./src/*.ts --bundle --platform=node --outdir=build",
+    "dev": "npm run build -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukeshafer/toxicManBot.git"
+  },
+  "author": "Luke Shafer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukeshafer/toxicManBot/issues"
+  },
+  "homepage": "https://github.com/lukeshafer/toxicManBot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
+    "discord-api-types": "^0.36.1",
+    "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "esbuild": "^0.14.49",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
 }
