@@ -6,16 +6,19 @@
 	"type": "module",
 	"scripts": {
 		"start": "pnpm run init && pnpm run bot",
-		"init": "pnpm run build && pnpm run deployCommands",
+		"init": "pnpm run build && pnpm run admin && pnpm run deployCommands",
 		"build": "esbuild ./src/*.ts --bundle --platform=node --outdir=build",
+		"buildAdmin": "esbuild ./admin/app.ts --bundle --platform=node --outdir=admin/build",
 		"deployCommands": "node ./build/deploy-commands.js",
 		"dev": "pnpm run build -- --watch ",
 		"bot": "screen -dmS toxicMan pnpm run startBot",
 		"startBot": "node .",
-		"stop": "screen -S toxicMan -X quit",
+		"admin": "screen -dmS toxicAdmin pnpm run serveAdmin",
+		"serveAdmin": "http-server ./admin -p 42069 -a 127.0.0.1",
+		"stop": "screen -S toxicMan -X quit & screen -S toxicAdmin -X quit",
 		"restart": "pnpm run stop && pnpm run start",
-		"api": "node ./build/api/_api.js",
-		"buildapi": "esbuild ./src/data/_api.ts --bundle --external:./node_modules/* --platform=node --outdir=build/api --format=esm"
+		"stopAdmin": "screen -S toxicAdmin -X quit",
+		"restartAdmin": "pnpm run stopAdmin && pnpm run admin"
 	},
 	"repository": {
 		"type": "git",
