@@ -1,36 +1,22 @@
-<script context="module" lang="ts">
-	//
-	import type { Load } from '@sveltejs/kit';
-	export const load: Load = async ({ params, fetch, session, stuff }) => {
-		const url = `https://api.toxic.lukeshafer.net/`;
-		const response = await fetch(url);
-
-		return {
-			status: response.status,
-			props: {
-				toxicResponses: response.ok && (await response.json())
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
-	export let toxicResponses: string[];
+	export let toxicResponses: string[] = [];
+
+	if (!Array.isArray(toxicResponses)) {
+		toxicResponses = [];
+	}
+
 	let editing = false;
 	let editingIndex = -1;
 	let editingValue = '';
 
 	const write = async () => {
-		alert("Clicked 'Save All'");
-		const url = 'https://api.toxic.lukeshafer.net/responses';
-		const response = await fetch(url, {
+		const response = await fetch('/', {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(toxicResponses)
+			body: JSON.stringify(toxicResponses),
 		});
-		alert('Did post!');
 		if (response.ok) {
 			alert('Saved!');
 		} else {
