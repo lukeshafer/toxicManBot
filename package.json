@@ -4,15 +4,11 @@
 	"description": "Just a toxic little friend for you <3",
 	"main": "./build/bot.js",
 	"scripts": {
-		"start": "pnpm run init && pnpm run bot",
+		"start": "pnpm run init && node .",
 		"init": "pnpm run build && pnpm run deployCommands",
 		"build": "esbuild ./src/*.ts --bundle --platform=node --outdir=build ",
 		"deployCommands": "node ./build/deploy-commands.js",
 		"dev": "pnpm run build -- --watch ",
-		"bot": "screen -dmS toxicMan pnpm run startBot",
-		"startBot": "node .",
-		"stop": "screen -S toxicMan -X quit",
-		"restart": "pnpm run stop && pnpm run start",
 		"api": "node ./build/api/_api.js",
 		"buildapi": "esbuild ./src/data/_api.ts --bundle --external:./node_modules/* --platform=node --outdir=build/api --format=esm"
 	},
