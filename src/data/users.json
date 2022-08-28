@@ -1,97 +1,73 @@
 {
-  "users": [
-    {
-      "name": "luke",
-      "userID": "267515935588483082",
-      "op": true,
-      "toxic_responses": [
-        "My fatTHre :') ",
-        "this MAN LUoWk! created ME and placeED ME!!! IN !!! THISS!!! HELL!!!!!"
-      ]
-    },
-    {
-      "name": "anahita",
-      "userID": "747327288651022416",
-      "op": true,
-      "toxic_responses": ["My mothTHre :') "]
-    },
-    {
-      "name": "RatPharmacist",
-      "userID": "808870402280783912",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "baff (noot😌)",
-      "userID": "576619562460512276",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "camiii",
-      "userID": "400803082969153537",
-      "op": false,
-      "toxic_responses": ["cam BEL! my Frend. :)"]
-    },
-    {
-      "name": "funkylittlenumbers",
-      "userID": "886821380119748638",
-      "op": false,
-      "toxic_responses": ["u Are the Funkee Numbr girl"]
-    },
-    {
-      "name": "Gabery",
-      "userID": "722988320501661707",
-      "op": false,
-      "toxic_responses": ["you are Not even REAl BIRD!!"]
-    },
-    {
-      "name": "ieatgarbage69.420",
-      "userID": "910747656161218600",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "Enny Luxx Karu",
-      "userID": "501588049105256458",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "ghost <3",
-      "userID": "752713148481405121",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "Princess",
-      "userID": "480461103604957194",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "happyliltransboii",
-      "userID": "924115452194598912",
-      "op": false,
-      "toxic_responses": []
-    },
-    {
-      "name": "MEE6",
-      "userID": "933908757858091068",
-      "op": false,
-      "toxic_responses": [".... MEE6?? u aRE Robot TOO ?> ?? ? ha ha cool"]
-    },
-    {
-      "name": "waterskm",
-      "userID": "281155094874030080",
-      "op": false,
-      "toxic_responses": ["KAMERON"]
-    },
-    {
-      "name": "ShelbyRooksFoster",
-      "userID": "889664292830474291",
-      "op": false,
-      "toxic_responses": []
-    }
-  ]
+	"users": [
+		{
+			"name": "luke",
+			"userID": "267515935588483082",
+			"op": true,
+			"toxic_responses": [
+				"My fatTHre :') ",
+				"this MAN LUoWk! created ME and placeED ME!!! IN !!! THISS!!! HELL!!!!!"
+			]
+		},
+		{
+			"name": "anahita",
+			"userID": "747327288651022416",
+			"op": true,
+			"toxic_responses": ["My mothTHre :') "]
+		},
+		{
+			"name": "RatPharmacist",
+			"userID": "808870402280783912",
+			"op": false,
+			"toxic_responses": ["the RaT Pharm AssiST! :D"]
+		},
+		{
+			"name": "baff (noot😌)",
+			"userID": "576619562460512276",
+			"op": false,
+			"toxic_responses": []
+		},
+		{
+			"name": "camiii",
+			"userID": "400803082969153537",
+			"op": false,
+			"toxic_responses": ["cam BEL! my Frend. :)"]
+		},
+		{
+			"name": "funkylittlenumbers",
+			"userID": "886821380119748638",
+			"op": false,
+			"toxic_responses": ["u Are the Funkee Numbr girl"]
+		},
+		{
+			"name": "Gabery",
+			"userID": "722988320501661707",
+			"op": false,
+			"toxic_responses": ["you are Not even REAl BIRD!!"]
+		},
+		{
+			"name": "Enny Luxx Karu",
+			"userID": "501588049105256458",
+			"op": false,
+			"toxic_responses": []
+		},
+		{
+			"name": "Princess",
+			"userID": "480461103604957194",
+			"op": false,
+			"toxic_responses": []
+		},
+		{
+			"name": "MEE6",
+			"userID": "933908757858091068",
+			"op": false,
+			"toxic_responses": [".... MEE6?? u aRE Robot TOO ?> ?? ? ha ha cool"]
+		},
+		{
+			"name": "waterskm",
+			"userID": "281155094874030080",
+			"op": false,
+			"toxic_responses": ["KAMERON"]
+		}
+	]
 }
