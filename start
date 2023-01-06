@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+export DISCORD_TOKEN=OTEwNzQ3NjU2MTYxMjE4NjAw.GSlGir.0hEGciRZ9lK2_JwD-zsU0RfgkoqPCzClSocXFQ
+export CLIENT_ID=910747656161218600
+export GUILD_ID=884599476424151060
+export PORT=8082
+
+git pull
+npm install
+npm start
+
