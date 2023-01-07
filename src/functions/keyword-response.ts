@@ -1,19 +1,21 @@
 import type { Message } from 'discord.js';
 import { reactions } from '../data/reactions.json';
 
-let lastMessage: string = '';
+let lastMessageSent: string = '';
 
-export default (message: Message) => {
-	let key: keyof typeof reactions;
+export default async (message: Message) => {
+	const user = message.author.id;
+	type ReactionKeyword = keyof typeof reactions;
 	// if message contains a key in reactions, send the corresponding value
 	const newMsg = message.content.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-	for (key in reactions) {
-		if (newMsg.includes(key)) {
-			if (key === lastMessage) return false;
-			message.channel.send(reactions[key]);
-			lastMessage = key;
-			return true;
-		}
+	const responses = Object.entries(reactions).filter(([key, value]) => (newMsg.includes(key) && !(value === lastMessageSent && user === message.client.user?.id))) as [ReactionKeyword, string][];
+
+	if (responses.length > 0) {
+		const [, messageText] = responses[0]
+		message.channel.send(messageText);
+		lastMessageSent = messageText;
+		return true;
 	}
+
 	return false;
 };

@@ -7,10 +7,7 @@
 		"start": "npm run init && node .",
 		"init": "npm run build && npm run deployCommands",
 		"build": "esbuild ./src/*.ts --bundle --platform=node --outdir=build ",
-		"deployCommands": "node ./build/deploy-commands.js",
-		"dev": "npm run build -- --watch ",
-		"api": "node ./build/api/_api.js",
-		"buildapi": "esbuild ./src/data/_api.ts --bundle --external:./node_modules/* --platform=node --outdir=build/api --format=esm"
+		"deployCommands": "node ./build/deploy-commands.js"
 	},
 	"repository": {
 		"type": "git",
